@@ -1,13 +1,14 @@
 <?php
-// untuk mengkoneksi ke database 
-$server='localhost';
-$user='root';
-$password='';
-$nama_database='toko_tantri';
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "toko_tantri";
 
-$db=mysqli_connect($server,$user,$password,$nama_database);
-if (!$db) {
-    die ("Gagal menghubungkan database".mysqli_connect_error());
+$koneksi = mysqli_connect($host, $user, $pass, $db);
+
+
+if (!$koneksi) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
+
 }
-
 ?>
