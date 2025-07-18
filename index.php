@@ -5,18 +5,18 @@ include 'config.php';
 if (isset($_POST['tambah'])) {
     $kd_brg = $_POST['kode_brg'];
     $nama = $_POST['nama_brg'];
-    $harga = $_POST['merk'];
-    $merk = $_POST['harga'];
+    $merk = $_POST['merk'];
+    $harga = $_POST['harga'];
     $jumlah = $_POST['jumlah'];
 
-    mysqli_query($koneksi, "INSERT INTO barang VALUES('$kode_brg','$nama_brg','$merk','$harga','$jumlah')");
+    mysqli_query ($koneksi, "INSERT INTO barang VALUES('$kd_brg','$nama','$merk','$harga','$jumlah')");
     header("Location: index.php");
 }
 
 
 if (isset($_GET['hapus'])) {
     $kd_brg = $_GET['hapus'];
-    mysqli_query($koneksi, "DELETE FROM barang WHERE kode_brg='$kode_brg'");
+    mysqli_query($koneksi, "DELETE FROM barang WHERE kode_brg='$kd_brg'");
     header("Location: index.php");
 }
 
@@ -26,7 +26,7 @@ $barangEdit = null;
 if (isset($_GET['edit'])) {
     $editMode = true;
     $kd_brg_edit = $_GET['edit'];
-    $result = mysqli_query($koneksi, "SELECT * FROM barang WHERE kode_brg='$kode_brg_edit'");
+    $result = mysqli_query($koneksi, "SELECT * FROM barang WHERE kode_brg='$kd_brg_edit'");
     $barangEdit = mysqli_fetch_assoc($result);
 }
 
@@ -34,11 +34,11 @@ if (isset($_GET['edit'])) {
 if (isset($_POST['update'])) {
     $kd_brg = $_POST['kode_brg'];
     $nama = $_POST['nama_brg'];
-    $harga = $_POST['merk'];
-    $merk = $_POST['harga'];
+    $merk = $_POST['merk'];
+    $harga = $_POST['harga'];
     $jumlah = $_POST['jumlah'];
 
-    mysqli_query($koneksi, "UPDATE barang SET nama='$nama', harga='$harga', merk='$merk', jumlah='$jumlah' WHERE kode_brg='$kode_brg'");
+    mysqli_query($koneksi, "UPDATE barang SET kode_brg='$kd_brg', nama_brg='$nama', merk='$merk', harga='$harga', jumlah='$jumlah' WHERE kode_brg='$kd_brg'");
     header("Location: index.php");
 }
 ?>
@@ -89,8 +89,8 @@ if (isset($_POST['update'])) {
         <tr>
             <th>Kode</th>
             <th>Nama</th>
-            <th>Harga</th>
             <th>Merk</th>
+            <th>Harga</th>
             <th>Jumlah</th>
             <th>Aksi</th>
         </tr>
